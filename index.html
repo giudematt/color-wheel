@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Color Harmony Wheel</title>
+  <style>
+    body {
+      background: white;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      font-family: sans-serif;
+      user-select: none;
+      touch-action: none;
+    }
+
+    .wheel-container {
+      position: relative;
+      width: 500px;
+      height: 500px;
+    }
+
+    .color-wheel {
+      width: 100%;
+      height: 100%;
+      transition: transform 0.05s linear;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+      transform-origin: center center;
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    h1 {
+      color: black;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Color Harmony Wheel</h1>
+
+  <div class="wheel-container" id="container">
+    <img src="6f96305f-137c-4f01-8f28-966122adb22b.png" class="color-wheel" id="wheel">
+    <img src="5eb5e1ca-89cd-437a-a731-052006fbb3a6.png" class="overlay">
+  </div>
+
+  <script>
+  const wheel = document.getElementById('wheel');
+  const container = document.getElementById('container');
+  let isDragging = false;
+  let lastAngle = null;
+  let currentRotation = 0;
+
+  function getAngle(event) {
+    const rect = container.getBoundingClientRect();
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+
+    const x = (event.touches ? event.touches[0].clientX : event.clientX) - centerX;
+    const y = (event.touches ? event.touches[0].clientY : event.clientY) - centerY;
+
+    return Math.atan2(y, x) * (180 / Math.PI);
+  }
+
+  function startDrag(event) {
+    isDragging = true;
+    lastAngle = getAngle(event);
+    event.preventDefault();
+  }
+
+  function drag(event) {
+    if (!isDragging) return;
+
+    const angle = getAngle(event);
+    let delta = angle - lastAngle;
+
+    // Correggi i salti da +180° a -180°
+    if (delta > 180) delta -= 360;
+    if (delta < -180) delta += 360;
+
+    currentRotation += delta;
+    lastAngle = angle;
+
+    wheel.style.transform = `rotate(${currentRotation}deg)`;
+  }
+
+  function endDrag() {
+    isDragging = false;
+    lastAngle = null;
+  }
+
+  // Mouse
+  container.addEventListener('mousedown', startDrag);
+  window.addEventListener('mousemove', drag);
+  window.addEventListener('mouseup', endDrag);
+
+  // Touch
+  container.addEventListener('touchstart', startDrag, { passive: false });
+  window.addEventListener('touchmove', drag, { passive: false });
+  window.addEventListener('touchend', endDrag);
+</script>
+
+
+</body>
+</html>
+
