@@ -11,15 +11,11 @@ A simple web app to explore color harmony using a rotating color wheel.
 ## Features
 
 - Works on desktop and mobile
-- Smooth rotation with mouse or touch
 - Simple and fast to use
 
 ## Try it online
 
 [https://sideralnoize.github.io/color-wheel/](https://sideralnoize.github.io/color-wheel/)
-
-(Replace with your actual GitHub Pages link after publishing)
-
 
 
 ## License
