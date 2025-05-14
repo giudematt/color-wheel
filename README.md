@@ -16,15 +16,11 @@ A simple web app to explore color harmony using a rotating color wheel.
 
 ## Try it online
 
-[https://your-username.github.io/color-wheel/](https://your-username.github.io/color-wheel/)
+[https://sideralnoize.github.io/color-wheel/](https://sideralnoize.github.io/color-wheel/)
 
 (Replace with your actual GitHub Pages link after publishing)
 
-## Files
 
-- `index.html` — Main page
-- `color-wheel.png` — Color wheel image
-- `triangle-overlay.png` — Fixed overlay for visual harmony
 
 ## License
 
