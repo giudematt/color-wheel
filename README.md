@@ -18,9 +18,6 @@ A simple web app to explore color harmony using a rotating color wheel.
 
 [https://sideralnoize.github.io/color-wheel/](https://sideralnoize.github.io/color-wheel/)
 
-(Replace with your actual GitHub Pages link after publishing)
-
-
 ## License
 
 MIT License
